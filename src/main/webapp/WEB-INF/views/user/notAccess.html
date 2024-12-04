@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>login</title>
 </head>
 <body>
+<form th:method="POST" th:action="@{/login}" th:object="${user}">
+  <label for="login">Enter login: </label>
+  <input type="text" th:field="*{login}" id="login"/>
+  <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Name error</div>
 
-<p >Not Access</p>
+  <br/>
+
+  <label for="password">Enter password: </label>
+  <input type="text" th:field="*{password}" id="password"/>
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
+  <br/>
+
+  <input type="submit" value="Login"/>
+  <br/>
+  <a style="color: brown">Invalid username or password, repeat the input</a>
+</form>
+
 </body>
 </html>

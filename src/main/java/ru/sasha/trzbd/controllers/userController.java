@@ -24,9 +24,7 @@ public class userController {
     }
 
     @GetMapping()
-    public String login(@ModelAttribute("user")User user){
-        return "user/login";
-    }
+    public String login(@ModelAttribute("user")User user){ return "user/login"; }
 
     @PostMapping()
     public String postLogin(@ModelAttribute("user") @Valid User user, BindingResult bindingResult){
@@ -34,11 +32,11 @@ public class userController {
         if (bindingResult.hasErrors()){
             return "user/login";
         }
-        if (userDAO.loginUser(user) == null)
-        {
+
+        if (userDAO.loginUser(user) == null) {
             return "user/notAccess";
         } else {
-            return "user/access";
+            return "redirect:/authorized";
         }
     }
 }

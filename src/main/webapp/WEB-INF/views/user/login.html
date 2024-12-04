@@ -9,11 +9,12 @@
   <label for="login">Enter login: </label>
   <input type="text" th:field="*{login}" id="login"/>
   <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Name error</div>
+
   <br/>
 
   <label for="password">Enter password: </label>
   <input type="text" th:field="*{password}" id="password"/>
-<!--  <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Pass errors</div>-->
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
   <br/>
 
   <input type="submit" value="Login"/>
